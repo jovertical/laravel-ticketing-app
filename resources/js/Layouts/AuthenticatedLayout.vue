@@ -77,6 +77,13 @@ const showingNavigationDropdown = ref(false);
                                         >
                                             Profile
                                         </DropdownLink>
+
+                                        <DropdownLink
+                                            :href="route('my.events.index')"
+                                        >
+                                            My Events
+                                        </DropdownLink>
+
                                         <DropdownLink
                                             :href="route('logout')"
                                             method="post"
@@ -168,6 +175,11 @@ const showingNavigationDropdown = ref(false);
                             <ResponsiveNavLink :href="route('profile.edit')">
                                 Profile
                             </ResponsiveNavLink>
+
+                            <ResponsiveNavLink :href="route('my.events.index')">
+                                My Events
+                            </ResponsiveNavLink>
+
                             <ResponsiveNavLink
                                 :href="route('logout')"
                                 method="post"

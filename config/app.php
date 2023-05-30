@@ -160,6 +160,7 @@ return [
          * Package Service Providers...
          */
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Based\TypeScript\TypeScriptServiceProvider::class,
 
         /*
          * Application Service Providers...
