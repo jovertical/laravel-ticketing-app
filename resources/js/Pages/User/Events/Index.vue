@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Head } from '@inertiajs/vue3';
 
+import PrimaryButtonLink from '@/Components/PrimaryButtonLink.vue';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import date from '@/utils/date';
 import { currencyFormat } from '@/utils/number';
@@ -40,12 +41,9 @@ let props = defineProps<{
                     </div>
 
                     <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-                        <button
-                            type="button"
-                            class="block px-3 py-2 text-sm font-semibold text-center text-white bg-indigo-600 rounded-md shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                        >
+                        <PrimaryButtonLink :href="route('user.events.create')">
                             Add event
-                        </button>
+                        </PrimaryButtonLink>
                     </div>
                 </div>
 
@@ -113,7 +111,7 @@ let props = defineProps<{
                                     >
                                         <!-- prettier-ignore -->
                                         <tr
-                                            v-for="event in events"
+                                            v-for="event in props.events"
                                             :key="event.id"
                                         >
                                             <td
@@ -151,7 +149,7 @@ let props = defineProps<{
                                             >
                                                 <a
                                                     href="#"
-                                                    class="text-indigo-600 hover:text-indigo-900"
+                                                    class="text-red-600 hover:text-red-900"
                                                 >
                                                     Edit
                                                     <span class="sr-only">

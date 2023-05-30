@@ -79,7 +79,7 @@ const showingNavigationDropdown = ref(false);
                                         </DropdownLink>
 
                                         <DropdownLink
-                                            :href="route('my.events.index')"
+                                            :href="route('user.events.index')"
                                         >
                                             My Events
                                         </DropdownLink>
@@ -176,7 +176,9 @@ const showingNavigationDropdown = ref(false);
                                 Profile
                             </ResponsiveNavLink>
 
-                            <ResponsiveNavLink :href="route('my.events.index')">
+                            <ResponsiveNavLink
+                                :href="route('user.events.index')"
+                            >
                                 My Events
                             </ResponsiveNavLink>
 
