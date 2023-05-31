@@ -2,6 +2,7 @@
 import { useForm } from '@inertiajs/vue3';
 
 import DateInput from '@/Components/DateInput.vue';
+import InputDescription from '@/Components/InputDescription.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import ImageUploader from '@/Components/ImageUploader.vue';
@@ -20,7 +21,7 @@ let form = useForm({
     start_time: '',
     end_date: '',
     end_time: '',
-    price: '',
+    price: '0',
     seats: '',
 });
 
@@ -84,22 +85,22 @@ let submit = () => {
                 <InputError class="mt-2" :message="form.errors.banner" />
             </div>
 
-            <div class="flex items-center w-full space-x-4">
-                <div class="w-1/2">
+            <div class="flex flex-wrap w-full md:flex-nowrap md:space-x-4">
+                <div class="w-full md:w-1/2">
                     <InputLabel for="start_date" value="Start Date" />
 
                     <!-- prettier-ignore -->
                     <DateInput
-                                    id="start_date"
-                                    class="block w-full mt-1"
-                                    v-model="form.start_date"
-                                    :disable-date="
-                                        (date: Date) => {
-                                            return date < new Date()
-                                                || date > new Date(form.end_date)
-                                        }
-                                    "
-                                />
+                        id="start_date"
+                        class="block w-full mt-1"
+                        v-model="form.start_date"
+                        :disable-date="
+                            (date: Date) => {
+                                return date < new Date()
+                                    || date > new Date(form.end_date)
+                            }
+                        "
+                    />
 
                     <InputError
                         class="mt-2"
@@ -107,24 +108,24 @@ let submit = () => {
                     />
                 </div>
 
-                <div class="w-1/2">
+                <div class="w-full md:w-1/2">
                     <InputLabel for="end_date" value="End Date" />
 
                     <!-- prettier-ignore -->
                     <DateInput
-                                    id="end_date"
-                                    class="block w-full mt-1"
-                                    v-model="form.end_date"
-                                    :disable-date="(date: Date) => date < new Date(form.start_date)"
-                                    :disabled="!form.start_date"
-                                />
+                        id="end_date"
+                        class="block w-full mt-1"
+                        v-model="form.end_date"
+                        :disable-date="(date: Date) => date < new Date(form.start_date)"
+                        :disabled="!form.start_date"
+                    />
 
                     <InputError class="mt-2" :message="form.errors.end_date" />
                 </div>
             </div>
 
-            <div class="flex items-center w-full space-x-4">
-                <div class="w-1/2">
+            <div class="flex flex-wrap w-full md:flex-nowrap md:space-x-4">
+                <div class="w-full md:w-1/2">
                     <InputLabel for="start_time" value="Start Time" />
 
                     <TimeInput
@@ -139,7 +140,7 @@ let submit = () => {
                     />
                 </div>
 
-                <div class="w-1/2">
+                <div class="w-full md:w-1/2">
                     <InputLabel for="end_time" value="End Time" />
 
                     <TimeInput
@@ -153,8 +154,8 @@ let submit = () => {
                 </div>
             </div>
 
-            <div class="flex items-center w-full space-x-4">
-                <div class="w-1/2">
+            <div class="flex flex-wrap w-full md:flex-nowrap md:space-x-4">
+                <div class="w-full md:w-1/2">
                     <InputLabel for="price" value="Price" />
 
                     <MoneyInput
@@ -163,10 +164,15 @@ let submit = () => {
                         v-model="form.price"
                     />
 
+                    <InputDescription
+                        class="mt-2"
+                        value="Set the price to 0 if this is a free event"
+                    />
+
                     <InputError class="mt-2" :message="form.errors.price" />
                 </div>
 
-                <div class="w-1/2">
+                <div class="w-full md:w-1/2">
                     <InputLabel for="seats" value="Seats" />
 
                     <TextInput
@@ -174,6 +180,11 @@ let submit = () => {
                         type="number"
                         class="block w-full mt-1"
                         v-model="form.seats"
+                    />
+
+                    <InputDescription
+                        class="mt-2"
+                        value="Maximum number of seats available"
                     />
 
                     <InputError class="mt-2" :message="form.errors.seats" />
