@@ -1,3 +1,4 @@
+import aspectRatio from '@tailwindcss/aspect-ratio';
 import forms from '@tailwindcss/forms';
 import colors from 'tailwindcss/colors';
 import defaultTheme from 'tailwindcss/defaultTheme';
@@ -25,5 +26,5 @@ export default {
         },
     },
 
-    plugins: [forms],
+    plugins: [aspectRatio, forms],
 };
