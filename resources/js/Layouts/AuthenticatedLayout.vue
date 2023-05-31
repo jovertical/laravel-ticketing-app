@@ -220,7 +220,7 @@ const showingNavigationDropdown = ref(false);
             </header>
 
             <!-- Page Content -->
-            <main>
+            <main class="bg-gray-100 dark:bg-gray-700">
                 <slot />
             </main>
 

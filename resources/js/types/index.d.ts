@@ -12,3 +12,18 @@ export type PageProps<
         user: User;
     };
 };
+
+export type PaginatedCollection<Model> = {
+    data: Model[];
+    current_page: number;
+    last_page: number;
+    per_page: number;
+    from: number;
+    to: number;
+    total: number;
+    links: {
+        active: boolean;
+        label: string;
+        url: string | null;
+    }[];
+};

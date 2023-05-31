@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\User\EventController;
+use App\Http\Controllers\User\EventController as UserEventController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -26,18 +28,18 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+    Route::get('/events', [EventController::class, 'index'])->name('events.index');
+    Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show');
 
-Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/user/events', [EventController::class, 'index'])->name('user.events.index');
-    Route::get('/user/events/create', [EventController::class, 'create'])->name('user.events.create');
-    Route::post('/user/events', [EventController::class, 'store'])->name('user.events.store');
+    Route::get('/user/events', [UserEventController::class, 'index'])->name('user.events.index');
+    Route::get('/user/events/create', [UserEventController::class, 'create'])->name('user.events.create');
+    Route::post('/user/events', [UserEventController::class, 'store'])->name('user.events.store');
 });
 
 require __DIR__ . '/auth.php';

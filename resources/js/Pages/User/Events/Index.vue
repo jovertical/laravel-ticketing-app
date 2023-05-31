@@ -121,7 +121,7 @@ let props = defineProps<{
                                                     <div class="flex-shrink-0 w-12 h-12">
                                                         <img
                                                             class="w-full h-full rounded-sm aspect-square"
-                                                            :src="(event as any).banner || 'https://via.placeholder.com/150'"
+                                                            :src="event.banner || 'https://via.placeholder.com/150'"
                                                             :alt="event.title" 
                                                         />
                                                     </div>

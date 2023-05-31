@@ -3,12 +3,12 @@
 namespace Database\Seeders;
 
 use App\Models\Event;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class EventsSeeder extends Seeder
 {
-    use WithoutModelEvents;
+    // use WithoutModelEvents;
 
     /**
      * Run the database seeds.

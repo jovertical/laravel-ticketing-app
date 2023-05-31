@@ -20,6 +20,10 @@ declare namespace App.Models {
         created_at: string | null;
         updated_at: string | null;
         organizer?: App.Models.User | null;
+        readonly is_upcoming?: boolean;
+        readonly next_start_date?: string | null;
+        readonly free?: boolean;
+        readonly banner?: string;
     }
 
     export interface User {
