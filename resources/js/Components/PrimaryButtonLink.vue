@@ -3,7 +3,6 @@ import { Link } from '@inertiajs/vue3';
 
 defineProps<{
     href: string;
-    active?: boolean;
 }>();
 </script>
 
